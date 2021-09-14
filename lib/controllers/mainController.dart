@@ -40,7 +40,7 @@ class MainController extends GetxController {
       } else {
         json['hit']--;
       }
-      shouldReload.value = true;
+      shouldReload.value = false;
       //iconlarin rengini belirlemek adina degiskenleri degistiriyorum
       json['userDowned'] = true;
       json['userUpped'] = false;

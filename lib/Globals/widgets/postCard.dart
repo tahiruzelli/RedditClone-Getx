@@ -32,38 +32,77 @@ class PostCard extends StatelessWidget {
       trailing: SizedBox(
         width: 50,
         child: Obx(
-          () => Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                json['hit'].toString(),
-                style: GoogleFonts.poppins(),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      mainController.postUp(json);
-                    },
-                    child: Icon(
-                      Icons.arrow_drop_up,
-                      color: json['userUpped'] ? Colors.red : Colors.black,
+          () => mainController.shouldReload.value
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      json['hit'].toString(),
+                      style: GoogleFonts.poppins(),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      mainController.postDown(json);
-                    },
-                    child: Icon(Icons.arrow_drop_down_sharp,
-                        color: json['userDowned'] ? Colors.red : Colors.black),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            mainController.postUp(json);
+                          },
+                          child: Icon(
+                            Icons.arrow_drop_up,
+                            color:
+                                json['userUpped'] ? Colors.red : Colors.black,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            mainController.postDown(json);
+                          },
+                          child: Icon(Icons.arrow_drop_down_sharp,
+                              color: json['userDowned']
+                                  ? Colors.red
+                                  : Colors.black),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      json['hit'].toString(),
+                      style: GoogleFonts.poppins(),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            mainController.postUp(json);
+                          },
+                          child: Icon(
+                            Icons.arrow_drop_up,
+                            color:
+                                json['userUpped'] ? Colors.red : Colors.black,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            mainController.postDown(json);
+                          },
+                          child: Icon(Icons.arrow_drop_down_sharp,
+                              color: json['userDowned']
+                                  ? Colors.red
+                                  : Colors.black),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
         ),
       ),
     );
