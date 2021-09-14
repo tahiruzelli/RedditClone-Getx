@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MainController extends GetxController {
   var posts = [].obs;
+  var shouldReload = true.obs;
   FetchData f = FetchData();
   getPosts() async {
     posts.value = await f.getTopPosts();
@@ -23,6 +24,7 @@ class MainController extends GetxController {
       } else {
         json['hit']++;
       }
+      shouldReload.value = true;
       //iconlarin rengini belirlemek adina degiskenleri degistiriyorum
       json['userUpped'] = true;
       json['userDowned'] = false;
@@ -38,7 +40,7 @@ class MainController extends GetxController {
       } else {
         json['hit']--;
       }
-
+      shouldReload.value = true;
       //iconlarin rengini belirlemek adina degiskenleri degistiriyorum
       json['userDowned'] = true;
       json['userUpped'] = false;

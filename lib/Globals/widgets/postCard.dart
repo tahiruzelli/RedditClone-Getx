@@ -11,28 +11,28 @@ class PostCard extends StatelessWidget {
   PostCard(this.json);
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => ListTile(
-        onTap: () {
-          mainController.launchURL(json['url']);
-        },
-        leading: CircleAvatar(
-          backgroundColor: Colors.transparent,
-          backgroundImage: NetworkImage(
-            json['thumbnail'],
-          ),
+    return ListTile(
+      onTap: () {
+        mainController.launchURL(json['url']);
+      },
+      leading: CircleAvatar(
+        backgroundColor: Colors.transparent,
+        backgroundImage: NetworkImage(
+          json['thumbnail'],
         ),
-        title: Text(
-          json['author'],
-          style: GoogleFonts.poppins(),
-        ),
-        subtitle: Text(
-          json['title'],
-          style: GoogleFonts.poppins(),
-        ),
-        trailing: SizedBox(
-          width: 50,
-          child: Row(
+      ),
+      title: Text(
+        json['author'],
+        style: GoogleFonts.poppins(),
+      ),
+      subtitle: Text(
+        json['title'],
+        style: GoogleFonts.poppins(),
+      ),
+      trailing: SizedBox(
+        width: 50,
+        child: Obx(
+          () => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
